@@ -7,10 +7,10 @@ public class Main {
         //Scanner console = new Scanner(System.in);
         Random console = new Random();
 
-        int idadeMaiorDezoito = 0;
+        int[] idadeMaiorDezoito = new int[1];
         float[] mediaIdadeTime = new float[5];
-        float mediaAlturaTotal = 0.0f;
-        float porcentagem = 0.0f;
+        float[] mediaAlturaTotal = new float[1];
+        float[] porcentagem = new float[1];
 
 
         Jogadores[] time1 = new Jogadores[11];
@@ -19,128 +19,50 @@ public class Main {
         Jogadores[] time4 = new Jogadores[11];
         Jogadores[] time5 = new Jogadores[11];
 
-        for(int i = 0; i < time1.length; i ++){
-            time1[i] = new Jogadores();
 
-            System.out.println("Digite a idade do jogador:");
-            time1[i].setIdade(console.nextInt(0,100));
+        adicionarJogadores(time1, console, idadeMaiorDezoito, porcentagem,  mediaIdadeTime, mediaAlturaTotal, 0);
+        adicionarJogadores(time2, console, idadeMaiorDezoito, porcentagem,  mediaIdadeTime, mediaAlturaTotal, 1);
+        adicionarJogadores(time3, console, idadeMaiorDezoito, porcentagem,  mediaIdadeTime, mediaAlturaTotal, 2);
+        adicionarJogadores(time4, console, idadeMaiorDezoito, porcentagem,  mediaIdadeTime, mediaAlturaTotal, 3);
+        adicionarJogadores(time5, console, idadeMaiorDezoito, porcentagem,  mediaIdadeTime, mediaAlturaTotal, 4);
 
-            System.out.println("Digite o peso do jogador:");
-            time1[i].setPeso(console.nextFloat(0,200));
 
-            System.out.println("Digite a altura do jogador:");
-            time1[i].setAltura(console.nextFloat(0,2));
 
-            if(time1[i].getIdade() >= 18){
-                idadeMaiorDezoito++;
-            }
-            if(time1[i].getPeso() > 80){
-                porcentagem += 1;
-            }
-            mediaIdadeTime[0] += time1[i].getIdade();
-            mediaAlturaTotal += time1[i].getAltura();
 
-        }
+        mediaAlturaTotal[0] = mediaAlturaTotal[0] / (time1.length + time2.length + time3.length + time4.length + time5.length);
+        porcentagem[0] = (porcentagem[0] / (time1.length + time2.length + time3.length + time4.length + time5.length)) * 100;
 
-        for(int i = 0; i < time2.length; i ++){
-            time2[i] = new Jogadores();
-
-            System.out.println("Digite a idade do jogador:");
-            time2[i].setIdade(console.nextInt(0, 100));
-
-            System.out.println("Digite o peso do jogador:");
-            time2[i].setPeso(console.nextFloat(0, 200));
-
-            System.out.println("Digite a altura do jogador:");
-            time2[i].setAltura(console.nextFloat(0, 2));
-
-            if(time2[i].getIdade() >= 18){
-                idadeMaiorDezoito++;
-            }
-            if(time2[i].getPeso() > 80){
-                porcentagem += 1;
-            }
-            mediaIdadeTime[1] += time2[i].getIdade();
-            mediaAlturaTotal += time2[i].getAltura();
-        }
-
-        for(int i = 0; i < time3.length; i ++){
-            time3[i] = new Jogadores();
-
-            System.out.println("Digite a idade do jogador:");
-            time3[i].setIdade(console.nextInt(0, 100));
-
-            System.out.println("Digite o peso do jogador:");
-            time3[i].setPeso(console.nextFloat(0, 200));
-
-            System.out.println("Digite a altura do jogador:");
-            time3[i].setAltura(console.nextFloat(0, 2));
-
-            if(time3[i].getIdade() >= 18){
-                idadeMaiorDezoito++;
-            }
-            if(time3[i].getPeso() > 80){
-                porcentagem += 1;
-            }
-            mediaIdadeTime[2] += time3[i].getIdade();
-            mediaAlturaTotal += time3[i].getAltura();
-        }
-
-        for(int i = 0; i < time4.length; i ++){
-            time4[i] = new Jogadores();
-
-            System.out.println("Digite a idade do jogador:");
-            time4[i].setIdade(console.nextInt(0, 100));
-
-            System.out.println("Digite o peso do jogador:");
-            time4[i].setPeso(console.nextFloat(0 , 200));
-
-            System.out.println("Digite a altura do jogador:");
-            time4[i].setAltura(console.nextFloat(0, 2));
-
-            if(time4[i].getIdade() >= 18){
-                idadeMaiorDezoito++;
-            }
-            if(time4[i].getPeso() > 80){
-                porcentagem += 1;
-            }
-            mediaIdadeTime[3] += time4[i].getIdade();
-            mediaAlturaTotal += time4[i].getAltura();
-        }
-
-        for(int i = 0; i < time5.length; i ++){
-            time5[i] = new Jogadores();
-
-            System.out.println("Digite a idade do jogador:");
-            time5[i].setIdade(console.nextInt(0, 100));
-
-            System.out.println("Digite o peso do jogador:");
-            time5[i].setPeso(console.nextFloat(0, 200));
-
-            System.out.println("Digite a altura do jogador:");
-            time5[i].setAltura(console.nextFloat(0, 2));
-
-            if(time5[i].getIdade() >= 18){
-                idadeMaiorDezoito++;
-            }
-            if(time5[i].getPeso() > 80){
-                porcentagem += 1;
-            }
-            mediaIdadeTime[4] += time5[i].getIdade();
-            mediaAlturaTotal += time5[i].getAltura();
-        }
-
-        mediaAlturaTotal = mediaAlturaTotal / (time1.length + time2.length + time3.length + time4.length + time5.length);
-        porcentagem = (porcentagem / (time1.length + time2.length + time3.length + time4.length + time5.length)) * 100;
-
-        System.out.println("Resultados: ");
-        System.out.println("A quantidade de jogadores maiores de 18 é: " + idadeMaiorDezoito);
-        System.out.println("A média de altura total é de: " + String.format("%.2f", mediaAlturaTotal));
-        System.out.println("A porcentagem que representa os jogadores com mais de 80Kg é: " + String.format("%.2f", porcentagem));
+        System.out.println("Resultados: \n" +
+        "A quantidade de jogadores maiores de 18 é: " + idadeMaiorDezoito[0] + "\n" +
+        "A média de altura total é de: " + String.format("%.2f", mediaAlturaTotal[0]) + " metros \n" +
+        "A porcentagem que representa os jogadores com mais de 80Kg é: %" + String.format("%.2f", porcentagem[0]) + "\n");
         for(int i = 0; i < mediaIdadeTime.length; i++){
             mediaIdadeTime[i] = (mediaIdadeTime[i] / time1.length);
-            System.out.println("A média da idade do time " + (i + 1) + " é de: " + String.format("%.2f", mediaIdadeTime[i]));
+            System.out.println("A média da idade do time " + (i + 1) + " é de: " + String.format("%.2f", mediaIdadeTime[i]) + " anos.");
         }
 
     }//Fim Main
+
+    public static void adicionarJogadores(Jogadores[] time, Random console, int[] idadeMaiorDezoito,
+                                          float[] porcentagem, float[] mediaIdadeTime, float[] mediaAlturaTotal, int n){
+
+        for(int i = 0; i < time.length; i ++){
+            time[i] = new Jogadores();
+
+            time[i].setIdade(console.nextInt(0,100));
+            time[i].setPeso(console.nextFloat(0,200));
+            time[i].setAltura(console.nextFloat(0,2));
+
+            if(time[i].getIdade() >= 18){
+                idadeMaiorDezoito[0]++;
+            }
+            if(time[i].getPeso() > 80){
+                porcentagem[0] += 1;
+            }
+            mediaIdadeTime[n] += time[i].getIdade();
+            mediaAlturaTotal[0] += time[i].getAltura();
+        }
+
+    }
+
 }// Fim Classe Main
